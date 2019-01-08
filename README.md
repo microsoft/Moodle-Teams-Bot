@@ -1,4 +1,8 @@
 
+# Moodle Assistant Bot for Microsoft Teams
+
+The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer questions about their courses, assignments, grades and other information in Moodle. The bot also sends Moodle notifications to students and teachers right within Teams!
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
