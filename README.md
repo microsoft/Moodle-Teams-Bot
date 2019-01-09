@@ -3,6 +3,20 @@
 
 The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer questions about their courses, assignments, grades and other information in Moodle. The bot also sends Moodle notifications to students and teachers right within Teams!
 
+# How to deploy the Moodle Assistant Bot to Azure
+
+Step 1: Create a new bot in the Microsoft Bot Registration Portal
+
+Note the AppId and the AppPassword for Step 2.
+
+Step 2: Click on the Deploy to Azure button and fill in the following details:
+
+moodleURL - The URL of your Moodle server
+AppID - The AppId from Step 1
+AppPassword - App Password from Step 1
+
+
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
