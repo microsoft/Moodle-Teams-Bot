@@ -11,11 +11,9 @@ Note the AppId and the AppPassword for Step 2.
 
 Step 2: Click on the Deploy to Azure button and fill in the following details:
 
-moodleURL - The URL of your Moodle server
-AppID - The AppId from Step 1
-AppPassword - App Password from Step 1
-
-
+* moodleURL - The URL of your Moodle server
+* AppID - The AppId from Step 1
+* AppPassword - App Password from Step 1
 
 ## Contributing
 
