@@ -1,0 +1,35 @@
+{
+  "name": "Moodle",
+  "version": "1.0.0",
+  "description": "Bot Builder v4 Moodle bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "author": "Enovation",
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/microsoft-graph-client": "^1.2.0",
+    "botbuilder": "4.0.6",
+    "botbuilder-ai": "4.0.6",
+    "botbuilder-dialogs": "4.0.6",
+    "botframework-connector": "4.0.6",
+    "i18n-nodejs": "^3.0.0",
+    "moodle-client": "^0.5.2",
+    "promise-retry" : "1.1.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "restify": "^6.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.18.4"
+  }
+}

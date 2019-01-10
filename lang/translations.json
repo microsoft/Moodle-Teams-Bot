@@ -1,0 +1,58 @@
+{
+    "Give feedback": {
+        "es": "Dar opinion",
+        "pt": "Dê retorno"
+    },
+    "Hello!":{
+        "es": "¡Hola!",
+        "pt": "Olá!"
+    },
+    "Help":{
+        "es": "Ayuda",
+        "pt": "Socorro"
+    },
+    "I am Moodle Assistant, a bot that answers questions about your assignments and courses. <br/><br/> If you are curious about what I can do, just type 'help' or click on the button below and I will give you the list of questions I can answer!": {
+        "es": "Soy Moodle Assistant, un robot que responde preguntas sobre tus tareas y cursos. <br/> <br/> Si tiene curiosidad sobre lo que puedo hacer, simplemente escriba 'ayuda' o haga clic en el botón de abajo y le daré la lista de preguntas que puedo responder.",
+        "pt": "Eu sou o Moodle Assistant, um bot que responde a perguntas sobre suas tarefas e cursos. <br/> <br/> Se você está curioso sobre o que eu posso fazer, basta digitar 'help' ou clicar no botão abaixo e eu lhe darei a lista de perguntas que posso responder!"
+    },
+    "Oops. Something went wrong!": {
+        "es": "Ups. ¡Algo salió mal!",
+        "pt": "Oops Algo deu errado!"
+    },
+    "Please give us feedback by clicking on the button below.":{
+        "es": "Por favor denos su opinión haciendo clic en el botón de abajo.",
+        "pt": "Por favor, nos dê seu feedback clicando no botão abaixo."
+    },
+    "Please login": {
+        "es": "Por favor Iniciar sesión",
+        "pt": "Por favor entre"
+    },
+    "Sorry, I do not understand": {
+        "es": "Lo siento, no entiendo",
+        "pt": "Desculpe me, eu não entendo"
+    },
+    "Sorry, the answer to this question is not available for now":{
+        "es": "Lo sentimos, la respuesta a esta pregunta no está disponible por ahora.",
+        "pt": "Desculpe, a resposta a esta pergunta não está disponível por enquanto"
+    },
+    "The answer to your query can not be displayed in team conversation. Please ask me the same question in personal chat.": {
+        "es": "La respuesta a su consulta no se puede mostrar en una conversación de equipo. Por favor, pregúntame la misma pregunta en el chat personal.",
+        "pt": "A resposta à sua consulta não pode ser exibida na conversa da equipe. Por favor, faça-me a mesma pergunta no chat pessoal."
+    },
+    "We couldn't log you in. Please try again later.": {
+        "es": "No pudimos iniciar sesión. Vuelve a intentarlo más tarde.",
+        "pt": "Não foi possível fazer o login. Por favor, tente novamente mais tarde."
+    },
+    "View": {
+        "es": "Vista",
+        "pt": "Visão"
+    },
+    "You are now signed out.": {
+        "es": "Ahora estás desconectado.",
+        "pt": "Você está desconectado agora."
+    },
+    "Your session has timed out.": {
+        "es": "Tu sesión ha expirado.",
+        "pt": "Sua sessão expirou."
+    }
+}
