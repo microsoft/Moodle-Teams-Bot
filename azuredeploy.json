@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "siteLoction":{
+        "siteLocation":{
             "type": "string"
         },
         "luisAppTier": {
@@ -63,6 +63,240 @@
         "botName": "[concat('moodle-', uniqueString(resourceGroup().id))]",
         "icon-url": "https://github.com/Microsoft/Moodle-Teams-Bot/blob/master/assets/moodlelarge-300x300.png"
     },
-    "resources": [],
+    "resources": [
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "sku": {
+                "name": "[parameters('luisAppTier')]"
+            },
+            "kind": "LUIS",
+            "name": "[concat(variables('botName'), '-luis')]",
+            "apiVersion": "2016-02-01-preview",
+            "location": "westus",
+            "scale": null,
+            "properties": {},
+            "dependsOn": []
+        }, 
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "name": "[variables('storageAcct')]",
+            "apiVersion": "2018-07-01",
+            "location": "[parameters('siteLocation')]",
+            "properties": {},
+            "dependsOn": []
+        },
+        {
+            "name": "[variables('botName')]",
+            "type": "Microsoft.BotService/botServices",
+            "location": "global",
+            "apiVersion": "2018-07-12",
+            "tags": {},
+            "sku": {
+                "name": "F0"
+            },
+            "kind": "sdk",
+            "properties": {
+                "displayName": "[variables('botDisplayName')]",
+                "description": "[variables('botDescription')]",
+                "iconUrl": "[variables('icon-url')]",
+                "endpoint": "[concat('https://', variables('botName'), '-svc.azurewebsites.net/api/messages')]",
+                "msaAppId": "[parameters('botApplicationId')]",
+                "luisAppIds": [
+                    "[concat(variables('luis-appId-en'), ',', variables('luis-appId-es'), ',', variables('luis-appId-pt'))]"
+                ],
+                "luisKey": "[listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1]"
+            },
+            "resources": [
+                {
+                    "name": "[concat(variables('botName'),'/moodle-oauth')]",
+                    "type": "Microsoft.BotService/botServices/Connections",
+                    "apiVersion": "2018-07-12",
+                    "location": "global",
+                    "properties": {
+                        "name": "moodle-oauth",
+                        "scopes": "Mail.Read openid profile User.Read User.ReadBasic.All",
+                        "serviceProviderId": "[variables('serviceProviderId')]",
+                        "serviceProviderDisplayName": "[variables('serviceProviderDisplayName')]",
+                        "parameters": [
+                            {
+                                "key": "tenantId",
+                                "value": "[subscription().tenantId]"
+                            },
+                            {
+                                "key": "clientId",
+                                "value": "[parameters('azureADApplicationID')]"
+                            },
+                            {
+                                "key": "clientSecret",
+                                "value": "[parameters('azureADApplicationKey')]"
+                            }
+                        ]
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.BotService/botServices/', variables('botName'))]"
+                    ]
+                },
+                {
+                    "name": "[concat(variables('botName'), '/MsTeamsChannel')]",
+                    "type": "Microsoft.BotService/botServices/channels",
+                    "apiVersion": "2018-07-12",
+                    "location": "global",
+                    "tags": {},
+                    "sku": {
+                        "name": "F0"
+                    },
+                    "properties": {
+                        "channelName": "MsTeamsChannel",
+                        "location": "global",
+                        "properties": {
+                            "isEnabled": true
+                        }
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.BotService/botServices/', variables('botName'))]"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "moodleHostingPlan",
+            "sku": {
+                "name": "F1",
+                "capacity": "0"
+            },
+            "properties": {
+                "name": "moodleHostingPlan"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[concat(variables('botName'),'-svc')]",
+            "apiVersion": "2016-08-01",
+            "location": "[parameters('siteLocation')]",
+            "scale": null,
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(variables('botName'),'-svc.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(variables('botName'),'-svc.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', 'moodleHostingPlan')]",
+                "reserved": false,
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "moodleUrl",
+                            "value": "[parameters('moodleUrl')]"
+                        },
+                        {
+                            "name": "luisEndpointKey_en",
+                            "value": "[listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1]"
+                        },
+                        {
+                            "name": "luisEndpointKey_es",
+                            "value": "[listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1]"
+                        },
+                        {
+                            "name": "luisEndpointKey_pt",
+                            "value": "[listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1]"
+                        },
+                        {
+                            "name": "microsoftAppID",
+                            "value": "[parameters('botApplicationId')]"
+                        },
+                        {
+                            "name": "microsoftAppPassword",
+                            "value": "[parameters('botApplicationSecret')]"
+                        },
+                        {
+                            "name": "luisApplicationId_en",
+                            "value": "[variables('luis-appId-en')]"
+                        },
+                        {
+                            "name": "luisApplicationId_es",
+                            "value": "[variables('luis-appId-es')]"
+                        },
+                        {
+                            "name": "luisApplicationId_pt",
+                            "value": "[variables('luis-appId-pt')]"
+                        },
+                        {
+                            "name": "luisEndpoint_en",
+                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                        },
+                        {
+                            "name": "luisEndpoint_es",
+                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                        },
+                        {
+                            "name": "luisEndpoint_pt",
+                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                        },
+                        {
+                            "name": "oAuthConnection",
+                            "value": "moodle-oauth"
+                        },
+                        {
+                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                            "value": "8.9.4"
+                        }
+                    ]
+                },
+                "scmSiteAlsoStopped": false,
+                "scmType": "ExternalGit",
+                "hostingEnvironmentProfile": null,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "cloningInfo": null,
+                "httpsOnly": false
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', variables('storageAcct'))]",
+                "[concat('Microsoft.CognitiveServices/accounts/', variables('botName'), '-luis')]",
+                "[concat('Microsoft.Web/serverfarms/', 'moodleHostingPlan')]"
+            ],
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "web",
+                    "type": "sourcecontrols",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', variables('botName'), '-svc')]"
+                    ],
+                    "properties": {
+                        "RepoUrl": "[parameters('repoUrl')]",
+                        "branch": "master",
+                        "IsManualIntegration": true
+                    }
+                }
+            ]
+        }
+    ],
     "outputs": {}
 }
