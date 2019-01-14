@@ -51,7 +51,18 @@
             }
         }
     },
-    "variables": {},
+    "variables": {
+        "luis-appId-pt": "72890ac6-bb4e-4c30-bbbe-62a9a7da874d",
+        "luis-appId-es": "9ff593c8-1038-4994-ae1a-e1e3daad61da",
+        "luis-appId-en": "cb59b52c-b9e0-45b3-967a-9499b0942d9d",
+        "botDisplayName": "Moodle Assistant",
+        "botDescription": "Moodle Assistant",
+        "serviceProviderId": "30dd229c-58e3-4a48-bdfd-91ec48eb906c",
+        "serviceProviderDisplayName": "Azure Active Directory v2",
+        "storageAcct": "[concat('moodle', uniqueString(resourceGroup().id))]",
+        "botName": "[concat('moodle-', uniqueString(resourceGroup().id))]",
+        "icon-url": "https://github.com/Microsoft/Moodle-Teams-Bot/blob/master/assets/moodlelarge-300x300.png"
+    },
     "resources": [],
     "outputs": {}
 }
