@@ -16,6 +16,24 @@
                 "description": "The pricing tier for LUIS model"
             }
         },
+        "luisLocation": {
+            "type": "string", 
+            "allowedValues": [
+                "australiaeast",
+                "brazilsouth",
+                "eastasia",
+                "eastus",
+                "eastus2",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westcentralus",
+                "westus",
+                "westus2",
+                "westeurope"
+            ],
+            "defaultValue": "westus"
+        },
         "botApplicationId": {
             "type": "string",
             "metadata": {
@@ -72,7 +90,7 @@
             "kind": "LUIS",
             "name": "[concat(variables('botName'), '-luis')]",
             "apiVersion": "2016-02-01-preview",
-            "location": "westus",
+            "location": "[parameters('luisLocation')]",
             "scale": null,
             "properties": {},
             "dependsOn": []
