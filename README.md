@@ -38,3 +38,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 &copy; Microsoft, Inc.  Code for this script is licensed under the GPLv3 license.
 
 Any Microsoft trademarks and logos included in these plugins are property of Microsoft and should not be reused, redistributed, modified, repurposed, or otherwise altered or used outside of this plugin.
+
+## Deploy to Azure
+
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
