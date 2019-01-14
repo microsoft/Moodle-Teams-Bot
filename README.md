@@ -15,6 +15,10 @@ Step 2: Click on the Deploy to Azure button and fill in the following details:
 * AppID - The AppId from Step 1
 * AppPassword - App Password from Step 1
 
+## Deploy to Azure
+
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
