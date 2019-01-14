@@ -1,7 +1,56 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "siteLoction":{
+            "type": "string"
+        },
+        "luisAppTier": {
+            "type": "string",
+            "defaultValue": "F0",
+            "allowedValues": [
+                "S0",
+                "F0"
+            ],
+            "metadata":{
+                "description": "The pricing tier for LUIS model"
+            }
+        },
+        "botApplicationId": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the bot id from the bot registration"
+            }
+        },
+        "botApplicationSecret": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the app password from the bot registration"
+            }
+        },
+        "moodleUrl": {
+            "type": "string",
+            "defaultValue": "https://moodleteams.azurewebsites.net"
+        },
+        "azureAdApplicationId": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the appId generated from the AAD app registration - PowerShell script execution"
+            }
+        },
+        "azureAdApplicationKey": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the appPwd generated from the AAD app registration - PowerShell script execution"
+            }
+        },
+        "repoUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the repository URL of the public GitHub repository"
+            }
+        }
+    },
     "variables": {},
     "resources": [],
     "outputs": {}
