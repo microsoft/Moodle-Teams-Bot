@@ -15,10 +15,6 @@ Step 2: Click on the Deploy to Azure button and fill in the following details:
 * AppID - The AppId from Step 1
 * AppPassword - App Password from Step 1
 
-## Deploy to Azure
-
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
-
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
@@ -42,3 +38,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 &copy; Microsoft, Inc.  Code for this script is licensed under the GPLv3 license.
 
 Any Microsoft trademarks and logos included in these plugins are property of Microsoft and should not be reused, redistributed, modified, repurposed, or otherwise altered or used outside of this plugin.
+
+## Deploy to Azure
+
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
