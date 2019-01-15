@@ -33,7 +33,7 @@ class SimpleGraphClient {
             return client.api('/me')
                 .get()
                 .catch(retry);
-            })
+            }, {retries: 3})
             .then(function (response) {
                 return response;
             }, function (err) {
