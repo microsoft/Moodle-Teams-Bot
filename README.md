@@ -5,15 +5,17 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 ## How to deploy the Moodle Assistant Bot to Azure
 
-Step 1: Create a new bot in the Microsoft Bot Registration Portal
+*Step 1:* Create a new bot in the [Microsoft Bot Registration Portal](https://aka.ms/MoodleBotRegistration)
 
-Note the AppId and the AppPassword for Step 2.
+Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate New Password" and copy the one-time generated password. Once the password is generated, note the Application ID along with the Application Password, scroll down and click on Save.
 
-Step 2: Click on the Deploy to Azure button and fill in the following details:
+*Step 2:* Click on the Deploy to Azure button and fill in the following details:
 
 * moodleURL - The URL of your Moodle server
-* AppID - The AppId from Step 1
-* AppPassword - App Password from Step 1
+* Bot Application ID - The Application ID from Step 1
+* Bot Application Password - Application Password from Step 1
+* Azure Ad Application ID - The Application ID saved in the "Setup Page" of your Office 365 Moodle Plugin 
+* Azure Ad Application Key - The Application Key saved in the "Setup Page" of your Office 365 Moodle Plugin
 
 ## Contributing
 
@@ -41,4 +43,4 @@ Any Microsoft trademarks and logos included in these plugins are property of Mic
 
 ## Deploy to Azure
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)]((https://aka.ms/DeployMoodleTeamsBot)
