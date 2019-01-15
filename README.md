@@ -17,6 +17,8 @@ Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate Ne
 * Azure Ad Application ID - The Application ID saved in the "Setup Page" of your Office 365 Moodle Plugin 
 * Azure Ad Application Key - The Application Key saved in the "Setup Page" of your Office 365 Moodle Plugin
 
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/DeployMoodleTeamsBot)
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
@@ -40,7 +42,3 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 &copy; Microsoft, Inc.  Code for this script is licensed under the MIT license.
 
 Any Microsoft trademarks and logos included in these plugins are property of Microsoft and should not be reused, redistributed, modified, repurposed, or otherwise altered or used outside of this plugin.
-
-## Deploy to Azure
-
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)]((https://aka.ms/DeployMoodleTeamsBot)
