@@ -36,29 +36,31 @@
         "botApplicationId": {
             "type": "string",
             "metadata": {
-                "description": "This is the bot id from the bot registration"
+                "description": "This is the Application ID of the bot generated from the Microsoft App Registration Portal"
             }
         },
         "botApplicationPassword": {
             "type": "string",
             "metadata": {
-                "description": "This is the app password from the bot registration"
+                "description": "This is the Application Password of the bot generated from the Microsoft App Registration Portal"
             }
         },
         "moodleUrl": {
             "type": "string",
-            "defaultValue": "https://moodleteams.azurewebsites.net"
+            "metadata": {
+                "description": "The URL of your Moodle Server"
+            }
         },
         "azureAdApplicationId": {
             "type": "string",
             "metadata": {
-                "description": "This is the appId generated from the AAD app registration - PowerShell script execution"
+                "description": "Application ID of the registerd Azure AD app under the 'Setup' tab of the O365 Moodle Plugin"
             }
         },
         "azureAdApplicationKey": {
             "type": "string",
             "metadata": {
-                "description": "This is the appPwd generated from the AAD app registration - PowerShell script execution"
+                "description": "Application Key of the registerd Azure AD app under the 'Setup' tab of the O365 Moodle Plugin"
             }
         },
         "repoUrl": {
