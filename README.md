@@ -5,11 +5,19 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 ## How to deploy the Moodle Assistant Bot to Azure
 
-*Step 1:* Create a new app in the [Microsoft Application Registration Portal](https://aka.ms/MoodleBotRegistration)
+### Step 1: Register
 
-Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate New Password" and copy the one-time generated password. Once the password is generated, note the Application ID along with the Application Password, scroll down and click on Save.
+* Go to the [Microsoft Application Registration Portal](https://aka.ms/MoodleBotRegistration) to create a new app.
 
-*Step 2:* Click on the Deploy to Azure button and fill in the following details in the form:
+* Once you enter the name of the app (Eg. MoodleBot), simply click on the `Generate New Password` buttn and copy the one-time generated password. 
+
+* Once the password is generated, copy the `Application ID` of the app along with the generated password from above. 
+
+* Scroll down and click on Save.
+
+### Step 2: Deploy
+
+Click on the Deploy to Azure button and fill in the following details in the form:
 
 * **Bot Application ID** - The Application ID from Step 1
 * **Bot Application Password** - Application Password from Step 1
@@ -20,14 +28,17 @@ Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate Ne
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/DeployMoodleTeamsBot)
 
+### Step 3: Configure
 
-*Step 3*: Once the bot is deployed, go to the [Azure Portal](https://portal.azure.com), navigate to your bot's Resource Group and select the "Web App Bot".
+* Once the bot is deployed, go to the [Azure Portal](https://portal.azure.com), navigate to your bot's Resource Group and select the "Web App Bot".
 
-*Step 4*: Copy the Messaging Endpoint highlighted in the `Overview` section (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/messages), rename `messages` to `webhook` (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/webook) and paste it to the `Bot Endpoint` field in the *Teams Settings* page of your Office 365 Moodle Plugin.
+* Copy the Messaging Endpoint highlighted in the `Overview` section (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/messages), rename `messages` to `webhook` (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/webook)
+
+* Paste this endpoint to the `Bot Endpoint` field in the *Teams Settings* page of your Office 365 Moodle Plugin.
   
 ## Feedback
 
-Thoughts? Questions? Ideas? Share them with us in our [Uservoice channel](https://microsoftteams.uservoice.com/forums/916759-moodle)!
+Thoughts? Questions? Ideas? Share them with us in our [Moodle+Teams Uservoice](https://microsoftteams.uservoice.com/forums/916759-moodle) channel!
 
 ## Contributing
 
