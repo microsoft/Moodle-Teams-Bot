@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 let moodleClient = require("moodle-client");
 let rp  = require("request-promise");
 let promiseRetry = require("promise-retry");
