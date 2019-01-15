@@ -86,7 +86,7 @@
         "serviceProviderDisplayName": "Azure Active Directory v2",
         "storageAcct": "[concat('moodle', uniqueString(resourceGroup().id))]",
         "botName": "[concat('moodle-', uniqueString(resourceGroup().id))]",
-        "icon-url": "https://github.com/Microsoft/Moodle-Teams-Bot/blob/master/assets/moodlelarge-300x300.png"
+        "icon-url": "https://raw.githubusercontent.com/Microsoft/Moodle-Teams-Bot/master/assets/moodlelarge-300x300.png"
     },
     "resources": [
         {
