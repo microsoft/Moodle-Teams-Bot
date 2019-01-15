@@ -279,6 +279,10 @@ class MoodleWsBot {
         if(data.channelData != undefined && data.channelData.team != undefined){
             team = data.channelData.team.id;
         }
+        let tenantId = null;
+        if(data.channelData != undefined && data.channelData.tenant != undefined){
+            tenantId = data.channelData.tenant.id;
+        }
         try {
             let storeItems = await storage.read(["botCache"])
             var botCache = storeItems["botCache"];
@@ -291,6 +295,10 @@ class MoodleWsBot {
                 }
                 if(storeItems["botCache"].serviceUrl != serviceUrl){
                     storeItems["botCache"].serviceUrl = serviceUrl;
+                    store = true;
+                }
+                if(storeItems["botCache"].tenant == 'undefined' && tenantId != null){
+                    storeItems["botCache"].tenant = tenantId;
                     store = true;
                 }
                 if(team != null){
@@ -308,7 +316,6 @@ class MoodleWsBot {
                 }
              } else {
                 let botObject = data.recipient;
-                let tenantId = data.channelData.tenant.id;
                 let channelId = data.channelId;
                 let teamsList = [team];
                 let usersList = {};

@@ -34,8 +34,12 @@ class SimpleMoodleClient {
 
         this.moodleWS = promiseRetry(function (retry) {
             return rp(options)
-            .catch(retry);
-        })
+            .catch(function (err) {
+                console.log(err.error.error);
+                retry(err);
+
+            });
+        }, {retries: 3})
         .then(function (response) {
             return moodleClient.init({
                 wwwroot: url,
@@ -57,8 +61,12 @@ class SimpleMoodleClient {
                         entities: entities
                     }
                 })
-                .catch(retry);
-            })
+                .catch(function (err) {
+                    console.log(err.error.error);
+                    retry(err);
+
+                });
+            }, {retries: 3})
             .then(function (response) {
                 return response;
             }, function (err) {
