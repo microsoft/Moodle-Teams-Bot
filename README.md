@@ -11,12 +11,12 @@ Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate Ne
 
 *Step 2:* Click on the Deploy to Azure button and fill in the following details:
 
-* moodleURL - The URL of your Moodle server
-* Bot Application ID - The Application ID from Step 1
-* Bot Application Password - Application Password from Step 1
-* Azure Ad Application ID - The Application ID saved in the "Setup Page" of your Office 365 Moodle Plugin 
-* Azure Ad Application Key - The Application Key saved in the "Setup Page" of your Office 365 Moodle Plugin
-* Azure Ad Teanant - The tenant name (xyz.onmicrosoft.com) of your Azure AD tenant
+* **moodleURL** - The URL of your Moodle server
+* **Bot Application ID** - The Application ID from Step 1
+* **Bot Application Password** - Application Password from Step 1
+* **Azure Ad Application ID** - The Application ID saved in the "Setup Page" of your Office 365 Moodle Plugin 
+* **Azure Ad Application Key** - The Application Key saved in the "Setup Page" of your Office 365 Moodle Plugin
+* **Azure Ad Tenant** - The tenant name (xyz.onmicrosoft.com) of your Azure AD tenant
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/DeployMoodleTeamsBot)
 
