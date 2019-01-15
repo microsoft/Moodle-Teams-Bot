@@ -31,8 +31,7 @@
                 "westus",
                 "westus2",
                 "westeurope"
-            ],
-            "defaultValue": "westus"
+            ]
         },
         "botApplicationId": {
             "type": "string",
