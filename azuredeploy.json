@@ -63,6 +63,12 @@
                 "description": "Application Key of the registerd Azure AD app under the 'Setup' tab of the O365 Moodle Plugin"
             }
         },
+        "azureAdTenant": {
+            "type": "string",
+            "metadata": {
+                "description": "This is the Azure AD Tenant for the Moodle plugin"
+            }
+        },
         "repoUrl": {
             "type": "string",
             "metadata": {
@@ -144,7 +150,7 @@
                         "parameters": [
                             {
                                 "key": "tenantId",
-                                "value": "[subscription().tenantId]"
+                                "value": "[parameters('azureAdTenant')]"
                             },
                             {
                                 "key": "clientId",
@@ -264,15 +270,15 @@
                         },
                         {
                             "name": "luisEndpoint_en",
-                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_es",
-                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'),'.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_pt",
-                            "value": "[concat('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'),'.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "oAuthConnection",
