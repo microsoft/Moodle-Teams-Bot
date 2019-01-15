@@ -7,7 +7,7 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 ### Step 1: Register
 
-* Go to the [Microsoft Application Registration Portal](https://aka.ms/MoodleBotRegistration) to create a new app.
+* Go to the [Microsoft Application Registration Portal](https://aka.ms/MoodleBotRegistration) to regsiter a new app.
 
 * Once you enter the name of the app (Eg. MoodleBot), simply click on the `Generate New Password` buttn and copy the one-time generated password. 
 
