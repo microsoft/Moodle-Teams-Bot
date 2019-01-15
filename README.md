@@ -9,17 +9,22 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 Once you enter the name of the app (Eg. MoodleBot), simply click on "Generate New Password" and copy the one-time generated password. Once the password is generated, note the Application ID along with the Application Password, scroll down and click on Save.
 
-*Step 2:* Click on the Deploy to Azure button and fill in the following details:
+*Step 2:* Click on the Deploy to Azure button and fill in the following details in the form:
 
-* **moodleURL** - The URL of your Moodle server
 * **Bot Application ID** - The Application ID from Step 1
 * **Bot Application Password** - Application Password from Step 1
-* **Azure Ad Application ID** - The Application ID saved in the "Setup Page" of your Office 365 Moodle Plugin 
-* **Azure Ad Application Key** - The Application Key saved in the "Setup Page" of your Office 365 Moodle Plugin
+* **moodleURL** - The URL of your Moodle server
+* **Azure Ad Application ID** - The Application ID saved in the *Setup* page of your Office 365 Moodle Plugin 
+* **Azure Ad Application Key** - The Application Key saved in the *Setup* page of your Office 365 Moodle Plugin
 * **Azure Ad Tenant** - The tenant name (xyz.onmicrosoft.com) of your Azure AD tenant
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/DeployMoodleTeamsBot)
 
+
+*Step 3*: Once the bot is deployed, go to the [Azure Portal](https://portal.azure.com), navigate to your bot's Resource Group and select the "Web App Bot".
+
+*Step 4*: Copy the Messaging Endpoint highlighted in the `Overview` section (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/messages), rename `messages` to `webhook` (Ex: https://*provisioned-bot-name*.azurewebsites.net/api/webook) and paste it to the `Bot Endpoint` field in the *Teams Settings* page of your Office 365 Moodle Plugin.
+  
 ## Feedback
 
 Thoughts? Questions? Ideas? Share them with us in our [Uservoice channel](https://microsoftteams.uservoice.com/forums/916759-moodle)!
