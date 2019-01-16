@@ -4,7 +4,6 @@
     "parameters": {
         "LUISPricingTier": {
             "type": "string",
-            "defaultValue": "F0",
             "allowedValues": [
                 "S0",
                 "F0"
@@ -45,7 +44,7 @@
                 "description": "This is the app password from the bot registration"
             }
         },
-        "moodleUrl": {
+        "moodleURL": {
             "type": "string",
             "metadata": {
                 "description": "This is the link to your Moodle server"
