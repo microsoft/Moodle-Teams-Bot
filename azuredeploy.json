@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "siteLocation":{
+        "siteLocation": {
             "type": "string"
         },
         "luisAppTier": {
@@ -12,8 +12,8 @@
                 "S0",
                 "F0"
             ],
-            "metadata":{
-                "description": "The pricing tier for LUIS model"
+            "metadata": {
+                "description": "The pricing tier for LUIS"
             }
         },
         "luisLocation": {
@@ -36,43 +36,35 @@
         "botApplicationId": {
             "type": "string",
             "metadata": {
-                "description": "This is the Application ID of the bot generated from the Microsoft App Registration Portal"
+                "description": "This is the bot id from the bot registration"
             }
         },
         "botApplicationPassword": {
             "type": "string",
             "metadata": {
-                "description": "This is the Application Password of the bot generated from the Microsoft App Registration Portal"
+                "description": "This is the app password from the bot registration"
             }
         },
         "moodleUrl": {
             "type": "string",
-            "metadata": {
-                "description": "The URL of your Moodle Server"
-            }
+            "defaultValue": "https://moodleteams.azurewebsites.net"
         },
         "azureAdApplicationId": {
             "type": "string",
             "metadata": {
-                "description": "Application ID of the registerd Azure AD app under the 'Setup' tab of the O365 Moodle Plugin"
+                "description": "This is the appId generated from the AAD app registration - PowerShell script execution"
             }
         },
         "azureAdApplicationKey": {
             "type": "string",
             "metadata": {
-                "description": "Application Key of the registerd Azure AD app under the 'Setup' tab of the O365 Moodle Plugin"
+                "description": "This is the appPwd generated from the AAD app registration - PowerShell script execution"
             }
         },
-        "azureAdTenant": {
+        "azureAdTenant" :{
             "type": "string",
             "metadata": {
-                "description": "This is the Azure AD Tenant for the Moodle plugin"
-            }
-        },
-        "repoUrl": {
-            "type": "string",
-            "metadata": {
-                "description": "This is the repository URL of the public GitHub repository"
+                "description": "This is the Azure AD tenant for the university account"
             }
         }
     },
@@ -86,7 +78,8 @@
         "serviceProviderDisplayName": "Azure Active Directory v2",
         "storageAcct": "[concat('moodle', uniqueString(resourceGroup().id))]",
         "botName": "[concat('moodle-', uniqueString(resourceGroup().id))]",
-        "icon-url": "https://raw.githubusercontent.com/Microsoft/Moodle-Teams-Bot/master/assets/moodlelarge-300x300.png"
+        "icon-url": "https://raw.githubusercontent.com/Microsoft/Moodle-Teams-Bot/master/assets/moodlelarge-300x300.png",
+        "repoUrl": "https://github.com/Microsoft/Moodle-Bot-Test"
     },
     "resources": [
         {
@@ -101,7 +94,7 @@
             "scale": null,
             "properties": {},
             "dependsOn": []
-        }, 
+        },
         {
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
@@ -270,15 +263,15 @@
                         },
                         {
                             "name": "luisEndpoint_en",
-                            "value": "[concat('https://', parameters('luisLocation'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'),' .api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_es",
-                            "value": "[concat('https://', parameters('luisLocation'),'.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_pt",
-                            "value": "[concat('https://', parameters('luisLocation'),'.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('luisLocation'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "oAuthConnection",
@@ -315,13 +308,12 @@
                         "[concat('Microsoft.Web/sites/', variables('botName'), '-svc')]"
                     ],
                     "properties": {
-                        "RepoUrl": "[parameters('repoUrl')]",
+                        "RepoUrl": "[variables('repoUrl')]",
                         "branch": "master",
                         "IsManualIntegration": true
                     }
                 }
             ]
         }
-    ],
-    "outputs": {}
+    ]
 }
