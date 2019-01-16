@@ -60,6 +60,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Copyright
 
-&copy; Microsoft, Inc.  Code for this script is licensed under the MIT license.
+&copy; Microsoft, Inc. Code for this respository is licensed under the MIT license.
 
-Any Microsoft trademarks and logos included in these plugins are property of Microsoft and should not be reused, redistributed, modified, repurposed, or otherwise altered or used outside of this plugin.
+Any Microsoft trademarks and logos included in this respository are property of Microsoft and should not be reused, redistributed, modified, repurposed, or otherwise altered or used outside of this respository.
