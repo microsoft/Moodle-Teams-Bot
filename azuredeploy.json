@@ -10,7 +10,7 @@
                 "F0"
             ],
             "metadata": {
-                "description": "The pricing tier for LUIS"
+                "description": "The pricing tier for LUIS: F0 is Free, and S0 is Standard."
             }
         },
         "LUISRegion": {
@@ -28,7 +28,10 @@
                 "westus",
                 "westus2",
                 "westeurope"
-            ]
+            ],
+            "metadata": {
+                "description": "The region where the LUIS resource will be deployed"
+            }
         },
         "botApplicationID": {
             "type": "string",
