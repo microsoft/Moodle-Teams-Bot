@@ -15,21 +15,18 @@
         "LUISRegion": {
             "type": "string", 
             "allowedValues": [
-                "australiaeast",
                 "brazilsouth",
                 "eastasia",
                 "eastus",
                 "eastus2",
-                "northeurope",
                 "southcentralus",
                 "southeastasia",
                 "westcentralus",
                 "westus",
-                "westus2",
-                "westeurope"
+                "westus2"
             ],
             "metadata": {
-                "description": "The region where the LUIS resource will be deployed"
+                "description": "The region where the LUIS resource will be deployed."
             }
         },
         "botApplicationID": {
