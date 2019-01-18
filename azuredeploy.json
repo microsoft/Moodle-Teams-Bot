@@ -71,6 +71,12 @@
             "metadata": {
                 "description": "This is the Azure AD tenant for the university account"
             }
+        },
+        "sharedMoodleSecret": {
+            "type":"string", 
+            "metadata": {
+                "description": "Paste the secret from the Office 365 Moodle plugin page"
+            }
         }
     },
     "variables": {
@@ -281,6 +287,10 @@
                         {
                             "name": "oAuthConnection",
                             "value": "moodle-oauth"
+                        },
+                        {
+                            "name": "sharedMoodleSecret", 
+                            "value": "[parameters('sharedMoodleSecret')]"
                         },
                         {
                             "name": "WEBSITE_NODE_DEFAULT_VERSION",
