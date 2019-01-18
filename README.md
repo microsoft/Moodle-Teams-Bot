@@ -21,10 +21,11 @@ Click on the Deploy to Azure button and fill in the following details in the for
 
 * **Bot Application ID** - The Application ID from Step 1
 * **Bot Application Password** - Application Password from Step 1
-* **moodleURL** - The URL of your Moodle server
-* **Azure Ad Application ID** - The Application ID saved in the *Setup* page of your Office 365 Moodle Plugin 
-* **Azure Ad Application Key** - The Application Key saved in the *Setup* page of your Office 365 Moodle Plugin
-* **Azure Ad Tenant** - The tenant name (xyz.onmicrosoft.com) of your Azure AD tenant
+* **Moodle URL** - The URL of your Moodle server
+* **Azure AD Application ID** - The Application ID saved in the *Setup* page of your Office 365 Moodle Plugin 
+* **Azure AD Application Key** - The Application Key saved in the *Setup* page of your Office 365 Moodle Plugin
+* **Azure AD Tenant** - The tenant name (xyz.onmicrosoft.com) of your Azure AD tenant
+* **Shared Moodle Secret** - Paste the secret from the Office 365 Moodle plugin page
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/DeployMoodleTeamsBot)
 
