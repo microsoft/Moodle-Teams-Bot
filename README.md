@@ -19,6 +19,8 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 Click on the Deploy to Azure button and fill in the following details in the form:
 
+* **LUIS Pricing Tier** - The pricing tier for LUIS: F0 is Free, and S0 is Standard
+* **LUIS Region** - The region where the LUIS resource will be deployed
 * **Bot Application ID** - The Application ID from Step 1
 * **Bot Application Password** - Application Password from Step 1
 * **Moodle URL** - The URL of your Moodle server
