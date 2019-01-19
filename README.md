@@ -19,9 +19,9 @@ The Moodle Assistant Bot for Microsoft Teams helps teachers and students answer 
 
 Click on the Deploy to Azure button and fill in the following details in the form:
 
-* **LUIS Pricing Tier** - The pricing tier for LUIS: F0 is Free, and S0 is Standard
-* **LUIS Region** - The region where the LUIS resource will be deployed
-* **Bot Application ID** - The Application ID from Step 1
+* **LUIS Pricing Tier** - [LUIS Pricing Tier](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/language-understanding-intelligent-services/)
+* **LUIS Region** - Region where the LUIS resource will be deployed
+* **Bot Application ID** - Application ID from Step 1
 * **Bot Application Password** - Application Password from Step 1
 * **Moodle URL** - The URL of your Moodle server
 * **Azure AD Application ID** - The Application ID saved in the *Setup* page of your Office 365 Moodle Plugin 
