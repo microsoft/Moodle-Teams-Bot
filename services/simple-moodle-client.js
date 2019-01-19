@@ -4,7 +4,7 @@
 let moodleClient = require("moodle-client");
 let rp  = require("request-promise");
 let promiseRetry = require("promise-retry");
-
+let jwt = require("jsonwebtoken");
 
 /**
  * This class is a wrapper for the Moodle webservices.
@@ -20,6 +20,10 @@ class SimpleMoodleClient {
         if (!token || !token.trim()) {
             throw new Error('MoodleClient: Invalid token received.');
         }
+        if(!process.env.sharedMoodleSecret || !process.env.sharedMoodleSecret.trim()){
+            throw new Error('MoodleClient: Shared secret not set.');
+        }
+        var sharedtoken = jwt.sign({ token: token, url: url }, process.env.sharedMoodleSecret);
         let options = {
             uri: `${ url }/local/o365/token.php`,
             qs: {
@@ -27,7 +31,7 @@ class SimpleMoodleClient {
                 'service': 'o365_webservices',
             },
             headers: {
-                'Authorization': 'Bearer '+ token
+                'Authorization': 'Bearer '+ sharedtoken
             },
             json: true
         };

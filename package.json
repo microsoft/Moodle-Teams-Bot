@@ -21,7 +21,8 @@
     "promise-retry" : "1.1.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "restify": "^6.3.4"
+    "restify": "^6.3.4",
+    "jsonwebtoken": "8.0.1"
   },
   "devDependencies": {
     "eslint": "^5.6.1",

@@ -231,6 +231,10 @@ class MoodleWsBot {
         const userLanguage = await this.languagePreferenceProperty.get(step.context, DEFAULT_LANGUAGE);
         // If the user is authenticated the bot can use the token to make API calls.
         if (tokenResponse !== undefined) {
+            if(step.context.activity.name == "signin/verifyState"){
+                const state = this.conversationState.get(step.context);
+                step.context.activity.text = state.commandState;
+            }
             let topIntent = false;
             let results = null;
             try{
