@@ -30,7 +30,12 @@
                 "southcentralus",
                 "westcentralus",
                 "westus",
-                "westus2"
+                "westus2",
+                "australiaeast",
+                "francecentral",
+                "northeurope",
+                "westeurope",
+                "uksouth"
             ],
             "metadata": {
                 "description": "The region where the LUIS resource will be deployed."
@@ -80,9 +85,18 @@
         }
     },
     "variables": {
-        "luis-appId-pt": "72890ac6-bb4e-4c30-bbbe-62a9a7da874d",
-        "luis-appId-es": "9ff593c8-1038-4994-ae1a-e1e3daad61da",
-        "luis-appId-en": "cb59b52c-b9e0-45b3-967a-9499b0942d9d",
+        "euLUISRegions": ["francecentral", "northeurope", "westeurope", "uksouth"],
+        "usAppId-pt": "72890ac6-bb4e-4c30-bbbe-62a9a7da874d",
+        "usAppId-es": "9ff593c8-1038-4994-ae1a-e1e3daad61da",
+        "usAppId-en": "cb59b52c-b9e0-45b3-967a-9499b0942d9d",
+        "auAppId-en": "cbec28c3-9bc3-4383-8409-3e7806ee0bce",
+        "auAppId-es": "6be53e59-d4cc-465e-8f16-65879916f596",
+        "auAppId-pt": "58c0cd7b-ba7e-4471-9b38-1cac6ad8cab3",
+        "euAppId-en": "12e3e107-53a6-4533-b895-430849800eae",
+        "euAppId-es": "0f50dd43-3f49-4ced-b6b8-a4a403e92f5b", 
+        "euAppId-pt": "af7a61c3-adcf-4fd2-acc9-ebb9e9a46e1a",
+        "isAU": "[equals(parameters('LUISRegion'), 'australiaeast')]",
+        "isEU": "[contains(variables('euLUISRegions'), parameters('LUISRegion'))]",
         "botDisplayName": "Moodle Assistant",
         "botDescription": "Moodle Assistant",
         "serviceProviderId": "30dd229c-58e3-4a48-bdfd-91ec48eb906c",
@@ -136,7 +150,7 @@
                 "endpoint": "[concat('https://', variables('botName'), '-svc.azurewebsites.net/api/messages')]",
                 "msaAppId": "[parameters('botApplicationID')]",
                 "luisAppIds": [
-                    "[concat(variables('luis-appId-en'), ',', variables('luis-appId-es'), ',', variables('luis-appId-pt'))]"
+                    "[concat(if(variables('isAU'), variables('auAppId-en'), if(variables('isEU'), variables('euAppId-en'), variables('usAppId-en'))),',', if(variables('isAU'), variables('auAppId-es'), if(variables('isEU'), variables('euAppId-es'), variables('usAppId-es'))),',',if(variables('isAU'), variables('auAppId-pt'), if(variables('isEU'), variables('euAppId-pt'), variables('usAppId-pt'))))]"
                 ],
                 "luisKey": "[listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1]"
             },
@@ -262,27 +276,27 @@
                         },
                         {
                             "name": "luisApplicationId_en",
-                            "value": "[variables('luis-appId-en')]"
+                            "value": "[if(variables('isAU'), variables('auAppId-en'), if(variables('isEU'), variables('euAppId-en'), variables('usAppId-en')))]"
                         },
                         {
                             "name": "luisApplicationId_es",
-                            "value": "[variables('luis-appId-es')]"
+                            "value": "[if(variables('isAU'), variables('auAppId-es'), if(variables('isEU'), variables('euAppId-es'), variables('usAppId-es')))]"
                         },
                         {
                             "name": "luisApplicationId_pt",
-                            "value": "[variables('luis-appId-pt')]"
+                            "value": "[if(variables('isAU'), variables('auAppId-pt'), if(variables('isEU'), variables('euAppId-pt'), variables('usAppId-pt')))]"
                         },
                         {
                             "name": "luisEndpoint_en",
-                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-en'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', if(variables('isAU'), variables('auAppId-en'), if(variables('isEU'), variables('euAppId-en'), variables('usAppId-en'))), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_es",
-                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-es'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', if(variables('isAU'), variables('auAppId-es'), if(variables('isEU'), variables('euAppId-es'), variables('usAppId-es'))), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "luisEndpoint_pt",
-                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', variables('luis-appId-pt'), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
+                            "value": "[concat('https://', parameters('LUISRegion'), '.api.cognitive.microsoft.com/luis/v2.0/apps/', if(variables('isAU'), variables('auAppId-pt'), if(variables('isEU'), variables('euAppId-pt'), variables('usAppId-pt'))), '?verbose=true&timezoneOffset=-360&subscription-key=', listKeys(concat(variables('botName'), '-luis'), '2016-02-01-preview').key1, '&q=')]"
                         },
                         {
                             "name": "oAuthConnection",
